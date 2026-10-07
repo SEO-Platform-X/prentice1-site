@@ -421,50 +421,73 @@ function faculty(h='Who trains you', intro='Every applicant also joins two one-h
     </div>
   </div></section>`;
 }
-const CADAVER_SVG = `<svg class="cadaver" viewBox="0 0 640 300" role="img" aria-label="Illustration of a human body under a drape on an anatomy lab table, with the face showing muscles, vessels and nerves">
+const HEADPATH = "M218 250 C170 250 108 220 110 154 C111 120 120 92 143 63 C155 50 165 45 177 44 C190 41 198 38 206 39 C212 40 217 45 220 48 C234 38 252 24 262 19 C268 17 272 26 273 34 C274 40 274 46 276 48 C281 45 286 43 290 44 C293 46 295 50 297 51 C300 48 302 46 304 46 C308 48 312 55 316 58 C320 55 326 49 331 48 C340 50 347 56 350 63 C354 76 356 92 360 106 C364 116 368 122 374 125 C388 128 400 129 410 131 L416 150 L416 250 Z";
+const CADAVER_SVG = `<svg class="cadaver" viewBox="70 -84 600 368" role="img" aria-label="Illustration of a person lying face up on an anatomy lab table under a sheet, with facial muscles, vessels and nerves shown">
   <defs>
-    <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A96E" stop-opacity=".38"/><stop offset="1" stop-color="#C9A96E" stop-opacity="0"/></linearGradient>
+    <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A96E" stop-opacity=".3"/><stop offset="1" stop-color="#C9A96E" stop-opacity="0"/></linearGradient>
     <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCD8D1"/><stop offset="1" stop-color="#A39E96"/></linearGradient>
-    <linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4ECDF"/><stop offset="1" stop-color="#E2D6C3"/></linearGradient>
-    <clipPath id="headclip"><path d="M42 198 C30 186 34 160 60 152 C72 147 86 147 96 146 C102 140 106 132 110 128 C113 132 114 140 118 146 L124 147 C127 145 130 145 133 148 C138 148 144 149 148 153 C154 162 160 168 172 172 L172 198 Z"/></clipPath>
+    <linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EFE4"/><stop offset="1" stop-color="#DFD2BE"/></linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0DCCD"/><stop offset=".7" stop-color="#E2C4B1"/><stop offset="1" stop-color="#CFAE99"/></linearGradient>
+    <clipPath id="hc"><path d="${HEADPATH}"/></clipPath>
   </defs>
-  <polygon class="cone" points="96,48 132,48 236,198 10,198" fill="url(#cone)"/>
-  <rect x="90" y="24" width="48" height="20" rx="10" fill="#3A3129"/><rect x="99" y="42" width="30" height="8" rx="3" fill="#FCF8F2"/><line x1="114" y1="0" x2="114" y2="24" stroke="#3A3129" stroke-width="3"/>
-  <rect x="14" y="198" width="612" height="14" rx="4" fill="url(#steel)"/>
-  <rect x="80" y="212" width="10" height="66" fill="#A39E96"/><rect x="552" y="212" width="10" height="66" fill="#A39E96"/>
-  <rect x="66" y="250" width="510" height="6" rx="3" fill="#BDB8B0"/>
-  <circle cx="85" cy="284" r="8" fill="#3A3129"/><circle cx="557" cy="284" r="8" fill="#3A3129"/>
-  <g transform="translate(110 198) scale(1.35) translate(-110 -198)">
-    <path d="M42 198 C30 186 34 160 60 152 C72 147 86 147 96 146 C102 140 106 132 110 128 C113 132 114 140 118 146 L124 147 C127 145 130 145 133 148 C138 148 144 149 148 153 C154 162 160 168 172 172 L172 198 Z" fill="#E6CFC0" stroke="#8A6F5E" stroke-width="1"/>
-    <g clip-path="url(#headclip)">
-      <path d="M96 150 C104 156 118 160 132 156" stroke="#B5473A" stroke-width="7" stroke-opacity=".55" fill="none"/>
-      <path d="M70 160 C86 168 104 172 126 170" stroke="#B5473A" stroke-width="6" stroke-opacity=".45" fill="none"/>
-      <path d="M60 156 C66 168 70 180 72 196" stroke="#B5473A" stroke-width="8" stroke-opacity=".4" fill="none"/>
-      <path class="vessel" d="M170 190 C150 184 136 176 126 166 C118 158 112 152 108 144" stroke="#B5222B" stroke-width="2" fill="none"/>
-      <path class="vessel" d="M170 194 C148 190 132 182 120 172 C112 164 104 156 98 150" stroke="#2D52B8" stroke-width="1.7" fill="none"/>
-      <path class="vessel" d="M78 176 C90 170 100 166 112 164 M90 170 C96 160 102 154 106 150 M92 172 C104 176 116 178 130 176" stroke="#C9A96E" stroke-width="1.3" fill="none"/>
+  <polygon class="cone" points="256,-46 300,-46 440,250 110,250" fill="url(#cone)"/>
+  <line x1="278" y1="-84" x2="278" y2="-66" stroke="#3A3129" stroke-width="3"/>
+  <rect x="250" y="-66" width="56" height="18" rx="9" fill="#3A3129"/><rect x="260" y="-50" width="36" height="7" rx="3" fill="#FCF8F2"/>
+  <rect x="80" y="250" width="600" height="14" rx="4" fill="url(#steel)"/>
+  <rect x="140" y="264" width="10" height="20" fill="#A39E96"/>
+  <path d="${HEADPATH}" fill="url(#skin)" stroke="#9A7A66" stroke-width="1.2"/>
+  <g clip-path="url(#hc)">
+    <path d="M143 63 C120 92 111 120 110 154 C108 220 170 250 218 250 L236 250 C190 244 128 222 126 156 C126 124 134 100 154 74 Z" fill="#5A4636"/>
+    <g class="musc" fill="#B5473A" fill-opacity=".5" stroke="#8E2F25" stroke-opacity=".45" stroke-width=".6">
+      <path d="M154 74 L204 46 L208 62 L162 92 Z"/>
+      <ellipse cx="230" cy="72" rx="20" ry="14"/>
+      <path d="M256 104 L294 58 L302 64 L264 110 Z"/>
+      <path d="M244 98 L282 56 L288 60 L250 104 Z"/>
+      <path d="M262 132 C285 126 312 140 332 170 L322 186 C300 176 280 166 262 152 Z"/>
+      <ellipse cx="300" cy="56" rx="15" ry="10"/>
     </g>
-    <ellipse cx="76" cy="176" rx="7" ry="9" fill="none" stroke="#8A6F5E" stroke-width="1"/>
-    <path d="M86 152 C90 154 94 154 97 152" stroke="#8A6F5E" stroke-width="1" fill="none"/>
+    <g stroke="#8E2F25" stroke-opacity=".4" stroke-width=".5" fill="none"><path d="M160 80 L204 54 M164 88 L206 60 M258 106 L296 62 M246 100 L284 58 M268 140 L320 168 M266 148 L316 178"/></g>
+    <path class="vessel" d="M372 190 C356 160 344 138 338 124 C326 100 312 80 300 66 C292 60 284 56 276 54 C262 56 248 60 240 64" stroke="#B5222B" stroke-width="2.6" fill="none"/>
+    <path class="vessel" d="M382 196 C366 168 352 146 346 132 C334 108 320 90 308 76 C300 70 292 66 284 64" stroke="#2D52B8" stroke-width="2.2" fill="none"/>
+    <path class="vessel" d="M262 150 C240 128 214 104 190 82 M262 150 C252 124 240 102 228 86 M262 150 C268 128 274 110 278 96 M262 150 C276 120 290 94 300 74 M262 150 C290 150 318 152 342 152" stroke="#C9A96E" stroke-width="1.8" fill="none"/>
   </g>
-  <path d="M188 200 C190 178 196 164 212 158 C232 150 256 138 286 140 C318 142 336 154 360 154 C384 154 404 142 432 144 C462 146 478 156 500 154 C522 152 534 146 552 152 C572 158 580 160 592 150 C600 140 604 128 612 128 C620 130 620 160 622 200 Z" fill="url(#sheet)" stroke="#CDBFAA" stroke-width="1.2"/>
-  <path d="M240 150 C262 168 300 174 330 160 M400 150 C430 166 470 168 498 160 M300 156 C330 186 390 190 430 176 M560 156 C580 170 596 168 606 150" stroke="#D3C5AF" stroke-width="1.1" fill="none"/>
-  <g font-family="DM Mono, monospace" font-size="11" fill="#7A5E28">
-    <g class="ann a1"><path class="lead" d="M113 143 L210 92 H340" stroke="#C9A96E" fill="none"/><circle cx="113" cy="143" r="4" fill="#C9A96E"/><text x="348" y="96">REAL TISSUE, REAL DEPTH</text></g>
-    <g class="ann a2"><path class="lead" d="M134 157 L230 118 H340" stroke="#C9A96E" fill="none"/><circle cx="134" cy="157" r="4" fill="#B5222B"/><text x="348" y="122">REAL VESSELS</text></g>
-    <g class="ann a3"><path class="lead" d="M83 162 L196 66 H340" stroke="#C9A96E" fill="none"/><circle cx="83" cy="162" r="4" fill="#C9A96E"/><text x="348" y="70">REAL NERVES</text></g>
+  <path d="M220 66 C227 72 236 72 243 66" stroke="#5E4637" stroke-width="1.6" fill="none"/>
+  <path d="M224 69 l-2 4 M230 71 l-1 4 M236 71 l0 4" stroke="#5E4637" stroke-width=".8"/>
+  <path d="M196 54 C206 48 220 47 230 51" stroke="#5E4637" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M264 38 C268 42 272 43 275 43" stroke="#9A7A66" stroke-width="1" fill="none"/>
+  <path d="M292 51 C296 53 300 53 304 50" stroke="#9A7A66" stroke-width="1" fill="none"/>
+  <path d="M350 66 C352 110 344 152 331 178 C318 180 300 176 282 172" stroke="#9A7A66" stroke-width="1" stroke-opacity=".7" fill="none"/>
+  <path d="M218 160 C218 146 232 138 248 140 C264 142 270 156 264 166 C258 174 246 176 236 172 C228 170 224 166 222 162" fill="none" stroke="#9A7A66" stroke-width="1.3"/>
+  <path d="M232 158 C236 150 248 150 252 156" fill="none" stroke="#9A7A66" stroke-width="1"/>
+  <path d="M404 250 C404 190 410 152 432 138 C462 122 500 114 540 114 C590 114 630 126 680 124 L680 250 Z" fill="url(#sheet)" stroke="#CDBFAA" stroke-width="1.2"/>
+  <path d="M440 150 C480 160 530 156 580 142 M450 200 C500 206 570 198 660 180" stroke="#D3C5AF" stroke-width="1.1" fill="none"/>
+  <g font-family="DM Mono, monospace" font-size="13" fill="#7A5E28">
+    <g class="ann a1"><path class="lead" d="M276 84 L380 -26 H462" stroke="#C9A96E" fill="none"/><circle cx="276" cy="84" r="5" fill="#C9A96E"/><text x="470" y="-22">REAL MUSCLE, REAL DEPTH</text></g>
+    <g class="ann a2"><path class="lead" d="M338 124 L420 8 H462" stroke="#C9A96E" fill="none"/><circle cx="338" cy="124" r="5" fill="#B5222B"/><text x="470" y="12">REAL VESSELS</text></g>
+    <g class="ann a3"><path class="lead" d="M262 150 L350 -60 H462" stroke="#C9A96E" fill="none"/><circle cx="262" cy="150" r="5" fill="#C9A96E"/><text x="470" y="-56">REAL NERVES</text></g>
+  </g>
+</svg>`;
+const LAYERS_SVG = `<svg viewBox="0 0 380 150" role="img" aria-label="Illustration of facial tissue layers from skin down to bone, with an artery and vein">
+  <g font-family="DM Mono, monospace" font-size="10" fill="#7A5E28">
+    ${[['Skin','#E8D5C0',0],['Superficial fat','#E9D27A',22],['Muscle','#B5473A',44],['Deep fat','#D9B95E',66],['Bone','#EFE9DF',88]].map(l=>`<rect x="0" y="${l[2]+10}" width="230" height="16" fill="${l[1]}" stroke="#14110F" stroke-opacity=".15"/><line x1="236" y1="${l[2]+18}" x2="254" y2="${l[2]+18}" stroke="#C9A96E"/><text x="262" y="${l[2]+22}">${l[0]}</text>`).join('')}
+    <path d="M18 62 C60 50 90 74 140 60 S210 56 228 64" stroke="#B5222B" stroke-width="2.5" fill="none"/>
+    <path d="M14 70 C70 80 120 66 170 74 S214 72 228 70" stroke="#2D52B8" stroke-width="2" fill="none"/>
+    <text x="0" y="140" fill="#6C5C4B">Know exactly which layer you're in</text>
   </g>
 </svg>`;
 
 const HANDS = {
   applicants:{h:'Real hands. Real anatomy. Real product.',
     c:['Learn on a real human body.',"Diagrams can't show you depth. In our cadaver lab you work hands-on with real human anatomy, seeing and feeling every layer of the face: fat pads, muscles, vessels and nerves, guided by Dr. Rivkin. Very few injector programs offer this."],
+    l:['See every layer.',"Skin, superficial fat, muscle, deep fat and bone. You learn exactly which layer you're in, what runs through it, and why it matters for every injection."],
     p:['Inject the real thing.',"You train with the same toxins and fillers that top practices use, not practice substitutes. The feel, flow and technique you learn are exactly what you'll use on day one of your new job."]},
   sponsors:{h:'Your product, in real hands, on real anatomy.',
     c:['They learn on a real human body.','Students learn depth and placement hands-on in a cadaver lab with real human anatomy, guided by Dr. Rivkin. They understand exactly how product behaves in tissue, and why technique matters.'],
+    l:['They know every layer.','Students learn the plane for every injection, from skin to bone, and which vessels and nerves run through each layer. Your product gets placed where it belongs.'],
     p:['They inject real product.','Students train with real, industry-grade toxins and fillers, never practice substitutes. On your exclusive training day, that product is yours, and it becomes the one they know best.']},
   practices:{h:'Trained on real anatomy and real product.',
     c:['They trained on a real human body.','Every candidate has worked hands-on in a cadaver lab with real human anatomy, guided by Dr. Rivkin. They arrive knowing depth, planes and danger zones, not just diagrams.'],
+    l:['They know every layer.',"Candidates can name the layer they're injecting into and what runs through it, before they ever treat one of your patients."],
     p:['They injected real product.',"Every candidate has trained with the same industry-grade toxins and fillers you use, not practice substitutes. Less ramp-up, more confidence on day one."]}
 };
 function handsOn(aud='applicants'){
@@ -478,7 +501,15 @@ function handsOn(aud='applicants'){
           <h3>${d.c[0]}</h3>
           <p>${d.c[1]}</p>
         </div>
-        <figure class="cadfig">${CADAVER_SVG}<figcaption class="shotcap">Real human anatomy in the cadaver lab, guided by Dr. Rivkin.</figcaption></figure>
+        <figure class="cadfig">${CADAVER_SVG}<figcaption class="shotcap">Illustration. Real human anatomy in the cadaver lab, guided by Dr. Rivkin.</figcaption></figure>
+      </div>
+      <div class="handrow">
+        <div>
+          <div class="k">Layer by layer</div>
+          <h3>${d.l[0]}</h3>
+          <p>${d.l[1]}</p>
+        </div>
+        <figure class="cadfig">${LAYERS_SVG}</figure>
       </div>
       <div class="handrow alt">
         <div>
