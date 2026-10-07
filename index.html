@@ -285,7 +285,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 
 <script>
 const PRODUCTS = {
-  tuition:  {aud:'applicants', name:'Cohort 1 tuition', desc:'Jan 25 to Mar 13, 2027. Online and in-person training in Los Angeles, cadaver lab, two 1:1 sessions, placement', price:15000},
+  tuition:  {aud:'applicants', name:'Cohort 1 tuition', desc:'Jan 25 to Mar 13, 2027. Online and in-person training in Los Angeles, cadaver lab, two small-group sessions, placement', price:15000},
   silver:   {aud:'sponsors', name:'Silver sponsorship', desc:'Logo, 30-min sponsored session, 30-min lunch session', price:5000},
   gold:     {aud:'sponsors', name:'Gold sponsorship', desc:'Silver benefits plus 1 exclusive training day on your product', price:10000},
   diamond:  {aud:'sponsors', name:'Diamond sponsorship', desc:'Gold benefits plus 5 PrenticeFest tickets with KOL meetings', price:15000},
@@ -296,7 +296,7 @@ const WEEKS = [
   ['Anatomy','Feb 1','Online. Fat compartments, vascular pathways and danger zones, with case-based checks.'],
   ['Technique','Feb 8','Online. Injection mechanics, device choice, depth and plane, and stop criteria.'],
   ['Safety','Feb 15','Online. Complication recognition, emergency algorithms and hyaluronidase protocols.'],
-  ['Practice ready','Feb 22','Online. Consults, consent and documentation, plus your 1:1 sessions on science and go-to-market.'],
+  ['Practice ready','Feb 22','Online. Consults, consent and documentation, plus your small-group sessions on science and go-to-market.'],
   ['Live in LA','Mar 1','In person in Los Angeles. Five days of hands-on injection with Dr. Rivkin, plus the cadaver course.'],
   ['Hire week','Mar 8','Bespoke matching, then PrenticeFest: meet your three matches and up to 30 practices. Ends Mar 13.']
 ];
@@ -328,12 +328,12 @@ function cohortBar(){
   return `<div class="wrap"><dl class="cohortbar">
     <div><dt>Cohort 1</dt><dd>Jan 25 to Mar 13, 2027</dd></div>
     <div><dt>In person</dt><dd>Los Angeles, March 2027</dd></div>
-    <div><dt>Seats</dt><dd>Only 30, top 1% of applicants</dd></div>
+    <div><dt>Seats</dt><dd>Only 20, top 5% of applicants</dd></div>
     <div><dt>Open to</dt><dd>RNs, NPs, PA-Cs and MDs</dd></div>
     <a class="btn" href="#/checkout/tuition">Reserve your seat</a>
   </dl></div>`;
 }
-function faculty(h='Who trains you', intro='Every applicant also gets two private, one-hour sessions.'){
+function faculty(h='Who trains you', intro='Every applicant also joins two one-hour small-group sessions.'){
   return `<section class="rule"><div class="wrap">
     <h2 style="margin-bottom:36px">${h}</h2>
     <div class="fac">
@@ -342,7 +342,7 @@ function faculty(h='Who trains you', intro='Every applicant also gets two privat
         <h3 style="font-size:40px">Alexander Rivkin, MD</h3>
         <p style="margin-top:10px;color:var(--ink)">Creator of the Prentice1 curriculum and lead trainer, online and live in Los Angeles.</p>
         <ul class="creds">
-          <li>Assistant Clinical Professor, David Geffen School of Medicine at UCLA</li>
+          <li>More than 20 years in non-surgical aesthetics</li>
           <li>Pioneered and popularized the non-surgical rhinoplasty</li>
           <li>Lead investigator on FDA and NIH clinical trials</li>
           <li>Trains physicians and injectors from around the world</li>
@@ -353,13 +353,13 @@ function faculty(h='Who trains you', intro='Every applicant also gets two privat
         <p class="muted" style="margin-bottom:18px">${intro}</p>
         <div class="oneones">
         <div class="oneone">
-          <div class="tag">1-hour 1:1, go-to-market</div>
+          <div class="tag">1-hour small group, go-to-market</div>
           <h3 style="font-size:28px;margin-top:6px">Get seen and get AI ready</h3>
           <p style="margin-top:8px">Build your Instagram presence, learn how social media wins patients, and get ready for how AI is changing the way patients find injectors.</p>
           <div class="person"><img class="avatar" src="${IMG.steve}" alt="Steve Lee"><div><p class="who" style="margin:0">Steve Lee</p><p class="small muted">Former executive at Google, Microsoft, Evolus and Revance</p></div></div>
         </div>
         <div class="oneone">
-          <div class="tag">1-hour 1:1, product science</div>
+          <div class="tag">1-hour small group, product science</div>
           <h3 style="font-size:28px;margin-top:6px">Know the science behind the product</h3>
           <p style="margin-top:8px">How toxins and fillers work, how they differ, and how to explain them to patients with confidence.</p>
           <div class="person"><img class="avatar" src="${IMG.aneesh}" alt="Aneesh Patel, PharmD"><div><p class="who" style="margin:0">Aneesh Patel, PharmD</p><p class="small muted">Formerly at Evolus, Galderma and Allergan</p></div></div>
@@ -371,15 +371,15 @@ function faculty(h='Who trains you', intro='Every applicant also gets two privat
 }
 function selectivity(){
   return `<div class="wrap"><div class="select" data-noreveal>
-    <div class="big"><span data-count="30">30</span><small>seats in Cohort 1</small></div>
-    <div class="big gold">1%<small>of applicants accepted</small></div>
-    <div><p style="font-size:20px;color:var(--ink);max-width:460px">Cohort 1 is capped at 30 seats, and we accept only the top 1% of applicants. Every injector in the room has earned their place.</p>
-      <div class="actions"><a class="btn" href="#/checkout/tuition">Apply for one of 30 seats</a></div></div>
+    <div class="big"><span data-count="20">30</span><small>seats in Cohort 1</small></div>
+    <div class="big gold">5%<small>of applicants accepted</small></div>
+    <div><p style="font-size:20px;color:var(--ink);max-width:460px">Cohort 1 is capped at 20 seats, and we accept only the top 5% of applicants. Every injector in the room has earned their place.</p>
+      <div class="actions"><a class="btn" href="#/checkout/tuition">Apply for one of 20 seats</a></div></div>
   </div></div>`;
 }
 function home(){
   return heroBand('For applicants · RN · NP · PA-C · MD','Your aesthetic injector career starts here.','Train seven weeks. Get hired.',
-    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country. Only 30 seats, for the top 1% of applicants.',
+    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country. Only 20 seats, for the top 5% of applicants.',
     'applicants','Nurse practitioner performing a facial injection while an instructor watches',
     `<a class="btn gold" href="#/checkout/tuition">Apply now</a><a class="btn ghost" href="#/applicants">See the program</a>`)
   + cohortBar() + selectivity() + `
@@ -391,15 +391,7 @@ function home(){
     </div>
     ${pathBlock()}
   </div></section>
-  ${faculty()}
-  <section class="rule"><div class="wrap">
-    <h2 style="margin-bottom:36px">Three ways in.</h2>
-    <div class="aud">
-      <a href="#/applicants"><h3>Applicants</h3><p>Become an injector and walk out with job offers. $15,000 all in, with monthly plans through Cherry.</p><span class="go">Explore the program</span></a>
-      <a href="#/sponsors"><h3>Sponsors</h3><p>Put your product in the hands of new injectors at the moment their preferences form.</p><span class="go">See sponsorship tiers</span></a>
-      <a href="#/practices"><h3>Practices</h3><p>Hire trained injectors for a flat $5,000. No 20% recruiting fee.</p><span class="go">Reserve a table</span></a>
-    </div>
-  </div></section>`;
+  ${faculty()}`;
 }
 function pathBlock(){
   const i = S.wk ?? 5;
@@ -414,7 +406,7 @@ function pathBlock(){
 function wkText(i){ return `<b style="color:var(--ink)">Week ${i+1}, from ${WEEKS[i][1]}: ${WEEKS[i][0]}.</b> ${WEEKS[i][2]}`; }
 function applicants(){
   return heroBand('For applicants · RN · NP · PA-C · MD','Your aesthetic injector career starts here.','Train seven weeks. Get hired.',
-    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country. Only 30 seats, for the top 1% of applicants.',
+    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country. Only 20 seats, for the top 5% of applicants.',
     'applicants','Nurse practitioner performing a facial injection while an instructor watches','')
   + cohortBar() + selectivity() + `
   <section style="padding-top:64px"><div class="wrap two">
@@ -424,8 +416,8 @@ function applicants(){
         <li><span class="num">01</span><span><b>Seven weeks of training</b>, online and in person in Los Angeles</span></li>
         <li><span class="num">02</span><span><b>Hands-on injection</b> with Dr. Rivkin and KOL faculty</span></li>
         <li><span class="num">03</span><span><b>Cadaver course</b> in facial anatomy</span></li>
-        <li><span class="num">04</span><span><b>1:1 product science session</b> with Aneesh Patel, PharmD</span></li>
-        <li><span class="num">05</span><span><b>1:1 go-to-market session</b> with Steve Lee: social media, Instagram and AI</span></li>
+        <li><span class="num">04</span><span><b>Small-group product science session</b> with Aneesh Patel, PharmD</span></li>
+        <li><span class="num">05</span><span><b>Small-group go-to-market session</b> with Steve Lee: social media, Instagram and AI</span></li>
         <li><span class="num">06</span><span><b>Bespoke matching</b> with practices that fit you</span></li>
         <li><span class="num">07</span><span><b>PrenticeFest job fair:</b> 30 interviews in one day</span></li>
       </ol>
@@ -433,7 +425,7 @@ function applicants(){
     <div class="panel">
       <div class="small muted">Tuition</div>
       <div class="price" style="margin:6px 0 12px">$15,000</div>
-      <p>All-inclusive. Online and in-person training, cadaver lab, two 1:1 sessions, placement.</p>
+      <p>All-inclusive. Online and in-person training, cadaver lab, two small-group sessions, placement.</p>
       <div class="receipt" style="margin:20px 0 0;padding:4px 0;border:0">
         <div class="line"><span class="muted">Pay over time</span><span>Monthly plans via Cherry</span></div>
         <div class="line"><span class="muted">Rate check</span><span>No credit score impact</span></div>
@@ -454,7 +446,7 @@ function sponsors(){
     ['Five PrenticeFest tickets: meet KOLs and new injectors',n,n,y]
   ];
   return heroBand('For sponsors · Pharma &amp; device','Be their first product.','',
-    'Prentice1 trains new aesthetic injectors and places them at top practices. The product they learn on is the product they carry into every practice they join. Each cohort is just 30 injectors, the top 1% of applicants.',
+    'Prentice1 trains new aesthetic injectors and places them at top practices. The product they learn on is the product they carry into every practice they join. Each cohort is just 20 injectors, the top 5% of applicants.',
     'sponsors','Clinicians practicing facial injections in a supervised training session','') + `
   <section style="padding-top:64px"><div class="wrap">
     <div class="tiers"><table>
@@ -471,11 +463,11 @@ function sponsors(){
     </table></div>
     <p class="muted small" style="margin-top:20px">Cohort 1 trains Jan 25 to Mar 13, 2027. The five-day live training is in Los Angeles in March. Every sponsored session is labeled and disclosed to students in writing.</p>
   </div></section>
-  ${faculty('The team behind Prentice1','Every student also completes two private, one-hour sessions.')}`;
+  ${faculty('The team behind Prentice1','Every student also completes two one-hour small-group sessions.')}`;
 }
 function practices(){
   return heroBand('For practices · Hire the best new injectors','Skip the 20% recruiting fee.','',
-    'Meet a cohort of 30 KOL-trained injectors, the top 1% of applicants, at PrenticeFest, our one-day job fair. One flat fee. No percentage of salary.',
+    'Meet a cohort of 20 KOL-trained injectors, the top 5% of applicants, at PrenticeFest, our one-day job fair. One flat fee. No percentage of salary.',
     'practices','Aesthetic injector in a white coat standing in a treatment room',
     `<a class="btn gold" href="#/checkout/table">Reserve your table</a>`) + `
   <section style="padding-top:64px"><div class="wrap">
@@ -493,7 +485,7 @@ function practices(){
     </div>
     <p class="muted small" style="margin-top:28px">First PrenticeFest: Los Angeles, the week of March 8, 2027. 30 tables, first come, first served.</p>
   </div></section>
-  ${faculty('Who trains your next hire','Every candidate also completes two private, one-hour sessions.')}`;
+  ${faculty('Who trains your next hire','Every candidate also completes two one-hour small-group sessions.')}`;
 }
 
 /* ---------- checkout ---------- */
@@ -523,7 +515,7 @@ function details(p){
     <div class="row">${field('first','First name','text',{ac:'given-name'})}${field('last','Last name','text',{ac:'family-name'})}</div>
     ${field('email','Email','email',{ac:'email'})}
     <div class="row">${field('license','License','select',{options:['RN','NP','PA-C','MD']})}${field('state','License state','text',{ph:'e.g. CA'})}</div>
-    <p class="small muted" style="margin:-4px 0 18px">Cohort 1 has only 30 seats and accepts the top 1% of applicants. It runs Jan 25 to Mar 13, 2027, with the live training week in Los Angeles in March.</p>`;
+    <p class="small muted" style="margin:-4px 0 18px">Cohort 1 has only 20 seats and accepts the top 5% of applicants. It runs Jan 25 to Mar 13, 2027, with the live training week in Los Angeles in March.</p>`;
   else if(aud==='sponsors') fields = `
     ${field('company','Company','text',{ac:'organization'})}
     <div class="row">${field('first','First name','text',{ac:'given-name'})}${field('last','Last name','text',{ac:'family-name'})}</div>
@@ -630,7 +622,7 @@ function confirmed(){
   if(!o.verified){ o.verified = true; save(); }
   const pr = PRODUCTS[o.p];
   const steps = {
-    applicants:[['Done','Seat reserved and email confirmed'],['Next','Application review. Only the top 1% are accepted into the 30 seats'],['Then','Online training opens Jan 25, 2027'],['Later','Live week in Los Angeles from Mar 1, then PrenticeFest']],
+    applicants:[['Done','Seat reserved and email confirmed'],['Next','Application review. Only the top 5% are accepted into the 20 seats'],['Then','Online training opens Jan 25, 2027'],['Later','Live week in Los Angeles from Mar 1, then PrenticeFest']],
     sponsors:[['Done','Sponsorship booked and email confirmed'],['Next','Partnerships call to set your session and product day'],['Then','Disclosure language approved in writing'],['Later','Your sessions run during Cohort 1']],
     practices:[['Done','Table reserved and email confirmed'],['Next','Tell us about your practice so we can match you'],['Then','Meet your 3 matches before the fair'],['Later','Interview at PrenticeFest and hire 1']]
   }[pr.aud];
