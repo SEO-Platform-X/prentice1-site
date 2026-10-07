@@ -227,6 +227,11 @@ tfoot td{border-bottom:0;padding-top:20px}
 .oneones{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .oneones .oneone{margin-bottom:0}
 @media (max-width:860px){.lead{grid-template-columns:1fr;gap:28px}.oneones{grid-template-columns:1fr}}
+.select{display:grid;grid-template-columns:auto auto 1fr;gap:56px;align-items:center;padding:56px 0;border-bottom:1px solid var(--line)}
+.select .big{font-family:var(--serif);font-weight:300;font-size:clamp(88px,11vw,148px);line-height:.85;color:var(--ink)}
+.select .big small{display:block;font-family:var(--sans);font-size:15px;color:var(--muted);margin-top:14px;letter-spacing:0}
+.select .gold{color:var(--gold-deep)}
+@media (max-width:860px){.select{grid-template-columns:1fr 1fr;gap:28px}.select>p,.select>div:last-child{grid-column:1/-1}}
 footer{border-top:1px solid var(--line);padding:40px 0 56px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -299,7 +304,7 @@ function cohortBar(){
   return `<div class="wrap"><dl class="cohortbar">
     <div><dt>Cohort 1</dt><dd>Jan 25 to Mar 13, 2027</dd></div>
     <div><dt>In person</dt><dd>Los Angeles, March 2027</dd></div>
-    <div><dt>Seats</dt><dd>25, top 1% of applicants</dd></div>
+    <div><dt>Seats</dt><dd>Only 30, top 1% of applicants</dd></div>
     <div><dt>Open to</dt><dd>RNs, NPs, PA-Cs and MDs</dd></div>
     <a class="btn" href="#/checkout/tuition">Reserve your seat</a>
   </dl></div>`;
@@ -340,12 +345,20 @@ function faculty(h='Who trains you', intro='Every applicant also gets two privat
     </div>
   </div></section>`;
 }
+function selectivity(){
+  return `<div class="wrap"><div class="select">
+    <div class="big">30<small>seats in Cohort 1</small></div>
+    <div class="big gold">1%<small>of applicants accepted</small></div>
+    <div><p style="font-size:20px;color:var(--ink);max-width:460px">Cohort 1 is capped at 30 seats, and we accept only the top 1% of applicants. Every injector in the room has earned their place.</p>
+      <div class="actions"><a class="btn" href="#/checkout/tuition">Apply for one of 30 seats</a></div></div>
+  </div></div>`;
+}
 function home(){
   return heroBand('For applicants · RN · NP · PA-C · MD','Your aesthetic injector career starts here.','Train seven weeks. Get hired.',
-    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country.',
+    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country. Only 30 seats, for the top 1% of applicants.',
     'applicants','Nurse practitioner performing a facial injection while an instructor watches',
     `<a class="btn gold" href="#/checkout/tuition">Apply now</a><a class="btn ghost" href="#/applicants">See the program</a>`)
-  + cohortBar() + `
+  + cohortBar() + selectivity() + `
   <section style="padding-top:64px"><div class="wrap">
     <div class="facts">
       <div><b>98%</b><span class="muted">Target hire rate</span></div>
@@ -377,9 +390,9 @@ function pathBlock(){
 function wkText(i){ return `<b style="color:var(--ink)">Week ${i+1}, from ${WEEKS[i][1]}: ${WEEKS[i][0]}.</b> ${WEEKS[i][2]}`; }
 function applicants(){
   return heroBand('For applicants · RN · NP · PA-C · MD','Your aesthetic injector career starts here.','Train seven weeks. Get hired.',
-    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country.',
+    'KOL-taught training with hands-on injection and cadaver work. Then one day of interviews with the best aesthetic practices in the country. Only 30 seats, for the top 1% of applicants.',
     'applicants','Nurse practitioner performing a facial injection while an instructor watches','')
-  + cohortBar() + `
+  + cohortBar() + selectivity() + `
   <section style="padding-top:64px"><div class="wrap two">
     <div>
       <h2>What you get</h2>
@@ -417,7 +430,7 @@ function sponsors(){
     ['Five PrenticeFest tickets: meet KOLs and new injectors',n,n,y]
   ];
   return heroBand('For sponsors · Pharma &amp; device','Be their first product.','',
-    'Prentice1 trains new aesthetic injectors and places them at top practices. The product they learn on is the product they carry into every practice they join.',
+    'Prentice1 trains new aesthetic injectors and places them at top practices. The product they learn on is the product they carry into every practice they join. Each cohort is just 30 injectors, the top 1% of applicants.',
     'sponsors','Clinicians practicing facial injections in a supervised training session','') + `
   <section style="padding-top:64px"><div class="wrap">
     <div class="tiers"><table>
@@ -438,7 +451,7 @@ function sponsors(){
 }
 function practices(){
   return heroBand('For practices · Hire the best new injectors','Skip the 20% recruiting fee.','',
-    'Meet a hand-picked cohort of KOL-trained injectors at PrenticeFest, our one-day job fair. One flat fee. No percentage of salary.',
+    'Meet a cohort of 30 KOL-trained injectors, the top 1% of applicants, at PrenticeFest, our one-day job fair. One flat fee. No percentage of salary.',
     'practices','Aesthetic injector in a white coat standing in a treatment room',
     `<a class="btn gold" href="#/checkout/table">Reserve your table</a>`) + `
   <section style="padding-top:64px"><div class="wrap">
@@ -486,7 +499,7 @@ function details(p){
     <div class="row">${field('first','First name','text',{ac:'given-name'})}${field('last','Last name','text',{ac:'family-name'})}</div>
     ${field('email','Email','email',{ac:'email'})}
     <div class="row">${field('license','License','select',{options:['RN','NP','PA-C','MD']})}${field('state','License state','text',{ph:'e.g. CA'})}</div>
-    <p class="small muted" style="margin:-4px 0 18px">Cohort 1 runs Jan 25 to Mar 13, 2027, with the live training week in Los Angeles in March.</p>`;
+    <p class="small muted" style="margin:-4px 0 18px">Cohort 1 has only 30 seats and accepts the top 1% of applicants. It runs Jan 25 to Mar 13, 2027, with the live training week in Los Angeles in March.</p>`;
   else if(aud==='sponsors') fields = `
     ${field('company','Company','text',{ac:'organization'})}
     <div class="row">${field('first','First name','text',{ac:'given-name'})}${field('last','Last name','text',{ac:'family-name'})}</div>
@@ -593,7 +606,7 @@ function confirmed(){
   if(!o.verified){ o.verified = true; save(); }
   const pr = PRODUCTS[o.p];
   const steps = {
-    applicants:[['Done','Seat reserved and email confirmed'],['Next','Application review, usually within 5 business days'],['Then','Online training opens Jan 25, 2027'],['Later','Live week in Los Angeles from Mar 1, then PrenticeFest']],
+    applicants:[['Done','Seat reserved and email confirmed'],['Next','Application review. Only the top 1% are accepted into the 30 seats'],['Then','Online training opens Jan 25, 2027'],['Later','Live week in Los Angeles from Mar 1, then PrenticeFest']],
     sponsors:[['Done','Sponsorship booked and email confirmed'],['Next','Partnerships call to set your session and product day'],['Then','Disclosure language approved in writing'],['Later','Your sessions run during Cohort 1']],
     practices:[['Done','Table reserved and email confirmed'],['Next','Tell us about your practice so we can match you'],['Then','Meet your 3 matches before the fair'],['Later','Interview at PrenticeFest and hire 1']]
   }[pr.aud];
