@@ -385,7 +385,16 @@ function cohortBar(){
     <a class="btn" href="#/checkout/tuition">Reserve your seat</a>
   </dl></div>`;
 }
-function faculty(h='Who trains you', intro='Every applicant also joins two one-hour small-group sessions.'){
+const FAC = {
+  applicants:{g:['Get seen and get AI ready','Build your Instagram presence, learn how social media wins patients, and get ready for how AI is changing the way patients find injectors.'],
+    s:['Know the science behind the product','How toxins and fillers work, how they differ, and how to explain them to patients with confidence.']},
+  sponsors:{g:['Graduates who build demand','Students learn to build an Instagram presence, win patients on social media and get ready for AI search. Injectors who grow demand for treatments grow demand for product.'],
+    s:['Science-literate injectors','Students learn how toxins and fillers work, how they differ, and how to explain them to patients accurately.']},
+  practices:{g:['Hires who help fill your schedule','Your hire learns to build an Instagram presence, win patients on social media and get ready for AI search, so they help grow your book, not just treat it.'],
+    s:['Hires who know the science','Your hire understands how toxins and fillers work and how they differ, and can explain them to patients with confidence.']}
+};
+function faculty(h='Who trains you', intro='Every applicant also joins two one-hour small-group sessions.', aud='applicants'){
+  const f=FAC[aud];
   return `<section class="rule"><div class="wrap">
     <h2 style="margin-bottom:36px">${h}</h2>
     <div class="fac">
@@ -406,14 +415,14 @@ function faculty(h='Who trains you', intro='Every applicant also joins two one-h
         <div class="oneones">
         <div class="oneone">
           <div class="tag">1-hour small group, go-to-market</div>
-          <h3 style="font-size:28px;margin-top:6px">Get seen and get AI ready</h3>
-          <p style="margin-top:8px">Build your Instagram presence, learn how social media wins patients, and get ready for how AI is changing the way patients find injectors.</p>
+          <h3 style="font-size:28px;margin-top:6px">${f.g[0]}</h3>
+          <p style="margin-top:8px">${f.g[1]}</p>
           <div class="person"><img class="avatar" src="${IMG.steve}" alt="Steve Lee"><div><p class="who" style="margin:0">Steve Lee</p><p class="small muted">Former executive at Google, Microsoft, Evolus and Revance</p></div></div>
         </div>
         <div class="oneone">
           <div class="tag">1-hour small group, product science</div>
-          <h3 style="font-size:28px;margin-top:6px">Know the science behind the product</h3>
-          <p style="margin-top:8px">How toxins and fillers work, how they differ, and how to explain them to patients with confidence.</p>
+          <h3 style="font-size:28px;margin-top:6px">${f.s[0]}</h3>
+          <p style="margin-top:8px">${f.s[1]}</p>
           <div class="person"><img class="avatar" src="${IMG.aneesh}" alt="Aneesh Patel, PharmD"><div><p class="who" style="margin:0">Aneesh Patel, PharmD</p><p class="small muted">Formerly at Evolus, Galderma and Allergan</p></div></div>
         </div>
         </div>
@@ -467,12 +476,12 @@ const CADAVER_SVG = `<svg class="cadaver" viewBox="70 -84 600 368" role="img" ar
     <g class="ann a3"><path class="lead" d="M262 150 L350 -60 H462" stroke="#C9A96E" fill="none"/><circle cx="262" cy="150" r="5" fill="#C9A96E"/><text x="470" y="-56">REAL NERVES</text></g>
   </g>
 </svg>`;
-const LAYERS_SVG = `<svg viewBox="0 0 380 150" role="img" aria-label="Illustration of facial tissue layers from skin down to bone, with an artery and vein">
+const LAYERS_SVG = (cap="Know exactly which layer you're in") => `<svg viewBox="0 0 380 150" role="img" aria-label="Illustration of facial tissue layers from skin down to bone, with an artery and vein">
   <g font-family="DM Mono, monospace" font-size="10" fill="#7A5E28">
     ${[['Skin','#E8D5C0',0],['Superficial fat','#E9D27A',22],['Muscle','#B5473A',44],['Deep fat','#D9B95E',66],['Bone','#EFE9DF',88]].map(l=>`<rect x="0" y="${l[2]+10}" width="230" height="16" fill="${l[1]}" stroke="#14110F" stroke-opacity=".15"/><line x1="236" y1="${l[2]+18}" x2="254" y2="${l[2]+18}" stroke="#C9A96E"/><text x="262" y="${l[2]+22}">${l[0]}</text>`).join('')}
     <path d="M18 62 C60 50 90 74 140 60 S210 56 228 64" stroke="#B5222B" stroke-width="2.5" fill="none"/>
     <path d="M14 70 C70 80 120 66 170 74 S214 72 228 70" stroke="#2D52B8" stroke-width="2" fill="none"/>
-    <text x="0" y="140" fill="#6C5C4B">Know exactly which layer you're in</text>
+    <text x="0" y="140" fill="#6C5C4B">${cap}</text>
   </g>
 </svg>`;
 
@@ -509,7 +518,7 @@ function handsOn(aud='applicants'){
           <h3>${d.l[0]}</h3>
           <p>${d.l[1]}</p>
         </div>
-        <figure class="cadfig">${LAYERS_SVG}</figure>
+        <figure class="cadfig">${LAYERS_SVG(aud==='applicants'?"Know exactly which layer you're in":"Every layer, named and understood")}</figure>
       </div>
       <div class="handrow alt">
         <div>
@@ -548,9 +557,15 @@ function selectivity(aud='applicants'){
   </div></div>`;
 }
 
+const EXPL = {
+  applicants:{h:'Inside the online classroom',x:[['3D anatomy you can peel','Turn layers on and off, from skin to bone. Tap any structure to see its depth, function and injection notes.'],['Video that stops to teach',"Real treatment videos with expert narration. The video pauses at key moments and asks what you'd do next."],['Check yourself every step','Quick checks after every lesson, with answers explained and linked back to the exact moment in the video.']]},
+  sponsors:{h:'What students master before your product day',x:[['Anatomy in 3D, layer by layer','Students study every layer of the face in an interactive 3D model, so they know exactly where product belongs.'],['Real treatment video','Lessons use real treatment videos that pause at key moments to test judgment, from assessment to placement.'],['Tested at every step','Students are checked after every lesson, so the injectors who reach your product day are prepared.']]},
+  practices:{h:'How your next hire was trained',x:[['Anatomy in 3D, layer by layer','Every candidate studied each layer of the face in an interactive 3D model, from skin to bone.'],['Real treatment video','They learned from real treatment videos that pause to test their judgment at key moments.'],['Tested at every step',"They passed checks after every lesson, so you're interviewing injectors who have shown what they know."]]}
+};
 function classroom(aud='applicants'){
+  const E=EXPL[aud];
   return `<section class="rule"><div class="wrap">
-    <h2>Inside the online classroom</h2>
+    <h2>${E.h}</h2>
     <p class="lede" style="margin-top:16px;color:var(--text)">${aud==='applicants'?"Five weeks online before the live week in Los Angeles. Every lesson pairs real injection video with a 3D model of the face, so you always know what's under the needle.":aud==='sponsors'?'Before the live week, students spend five weeks online learning anatomy, product science and technique. Every lesson pairs real injection video with a 3D model of the face.':'Before they ever meet you, every candidate completes five weeks of online training. Every lesson pairs real injection video with a 3D model of the face, with checks at every step.'}</p>
     <div style="margin-top:40px"><img class="shot clip" src="${IMG.lesson}" alt="Prentice1 lesson player: a cheek filler video with live captions, next to a 3D anatomy model showing the muscles and vessels in view" loading="lazy">
       <p class="shotcap">A real lesson: the video stops at key moments while the 3D model shows the structures under the needle.</p></div>
@@ -568,8 +583,8 @@ function classroom(aud='applicants'){
             <text x="12" y="62">SKIN</text><text x="12" y="104">MUSCLE</text><text x="12" y="146">BONE</text>
           </g>
         </svg>
-        <h3>3D anatomy you can peel</h3>
-        <p class="muted">Turn layers on and off, from skin to bone. Tap any structure to see its depth, function and injection notes.</p>
+        <h3>${E.x[0][0]}</h3>
+        <p class="muted">${E.x[0][1]}</p>
       </figure>
       <figure>
         <svg viewBox="0 0 300 190" role="img" aria-label="Animated diagram: a lesson video pauses at stops to ask questions">
@@ -581,8 +596,8 @@ function classroom(aud='applicants'){
           <g class="q1"><rect x="72" y="96" width="112" height="30" rx="2" fill="#C9A96E"/><text x="82" y="115" font-family="DM Sans, sans-serif" font-size="11" fill="#14110F">What depth here?</text></g>
           <g class="q2"><rect x="150" y="96" width="118" height="30" rx="2" fill="#C9A96E"/><text x="158" y="115" font-family="DM Sans, sans-serif" font-size="11" fill="#14110F">Name this vessel</text></g>
         </svg>
-        <h3>Video that stops to teach</h3>
-        <p class="muted">Real treatment videos with expert narration. The video pauses at key moments and asks what you'd do next.</p>
+        <h3>${E.x[1][0]}</h3>
+        <p class="muted">${E.x[1][1]}</p>
       </figure>
       <figure>
         <svg viewBox="0 0 300 190" role="img" aria-label="Animated diagram: a quiz question with the correct answer being selected">
@@ -592,8 +607,8 @@ function classroom(aud='applicants'){
           <path class="tk" d="M250 113 l5 5 l10 -11" stroke="#C9A96E" stroke-width="2.4" fill="none"/>
           <g class="cur"><path d="M0 0 L0 14 L4 10 L8 17 L10 16 L6 9 L11 9Z" fill="#FCF8F2"/></g>
         </svg>
-        <h3>Check yourself every step</h3>
-        <p class="muted">Quick checks after every lesson, with answers explained and linked back to the exact moment in the video.</p>
+        <h3>${E.x[2][0]}</h3>
+        <p class="muted">${E.x[2][1]}</p>
       </figure>
     </div>
     <img class="shot clip" src="${IMG.anatomy}" alt="Prentice1 3D facial anatomy explorer with layer controls for fat, muscle, arteries, veins, nerves and bone" loading="lazy">
@@ -692,7 +707,7 @@ function sponsors(){
     <p class="muted small" style="margin-top:20px">Cohort 1 trains Jan 25 to Mar 13, 2027. The five-day live training is in Los Angeles in March. Every sponsored session is labeled and disclosed to students in writing.</p>
   </div></section>
   ${classroom('sponsors')}
-  ${faculty('The team behind Prentice1','Every student also completes two one-hour small-group sessions.')}`;
+  ${faculty('The team behind Prentice1','Every student also completes two one-hour small-group sessions with Steve and Aneesh.','sponsors')}`;
 }
 function practices(){
   return heroBand('For practices · Hire the best new injectors','Skip the 20% recruiting fee.','',
@@ -715,7 +730,7 @@ function practices(){
     <p class="muted small" style="margin-top:28px">First PrenticeFest: Los Angeles, the week of March 8, 2027. 20 tables, first come, first served.</p>
   </div></section>
   ${classroom('practices')}
-  ${faculty('Who trains your next hire','Every candidate also completes two one-hour small-group sessions.')}`;
+  ${faculty('Who trains your next hire','Every candidate also completes two one-hour small-group sessions with Steve and Aneesh.','practices')}`;
 }
 
 /* ---------- checkout ---------- */
