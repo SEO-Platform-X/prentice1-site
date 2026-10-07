@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
+<meta name="theme-color" content="rgb(20,17,15)">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Prentice1 · Aesthetic injector training and placement</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +41,7 @@ p{margin:0}
 .num{font-family:var(--mono);font-size:13px;color:var(--gold-deep)}
 
 /* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--paper);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 82%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
 .mark{font-family:var(--sans);font-weight:700;font-size:24px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none}
 .mark span{font-weight:400;color:var(--gold)}
@@ -190,17 +191,17 @@ tfoot td{border-bottom:0;padding-top:20px}
 .next .state{min-width:96px;font-size:14px;color:var(--muted)}
 .next .state.ok{color:var(--ok)}
 
-.band{background:#14110F;color:#D9CFC0}
-.band h1,.band h2,.band h3{color:#FCF8F2}
+.band{background:transparent;color:var(--text)}
+.band h1,.band h2,.band h3{color:var(--ink)}
 .band h1{font-size:clamp(46px,5.6vw,76px);line-height:1}
 .band-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:end;padding-top:64px}
 .band-text{padding-bottom:64px}
 .band .photo{display:block;width:100%;aspect-ratio:5/6;object-fit:cover}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
 .tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:30px;color:var(--gold);margin-top:18px}
-.band .lede{color:#D9CFC0}
-.band .btn.ghost{color:#FCF8F2;border-color:#6C5C4B}
-.band .btn.ghost:hover{background:#221A14}
+.band .lede{color:var(--text)}
+.band .btn.ghost{color:var(--ink);border-color:var(--muted)}
+.band .btn.ghost:hover{background:var(--paper-2)}
 @media (max-width:860px){.band-grid{grid-template-columns:1fr;gap:32px}.band-text{padding-bottom:0}.band .photo{aspect-ratio:4/3}}
 .cohortbar{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);margin:0}
 .cohortbar dt{font-size:13px;color:var(--muted)}
@@ -232,6 +233,28 @@ tfoot td{border-bottom:0;padding-top:20px}
 .select .big small{display:block;font-family:var(--sans);font-size:15px;color:var(--muted);margin-top:14px;letter-spacing:0}
 .select .gold{color:var(--gold-deep)}
 @media (max-width:860px){.select{grid-template-columns:1fr 1fr;gap:28px}.select>p,.select>div:last-child{grid-column:1/-1}}
+
+/* ---- motion ---- */
+#prog{position:fixed;top:0;left:0;right:0;height:2px;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);z-index:50}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.w>span{display:inline-block;transform:translateY(108%);animation:rise 1.15s cubic-bezier(.16,.84,.24,1) forwards;animation-delay:calc(var(--i)*65ms + 120ms)}
+@keyframes rise{to{transform:none}}
+.hf{opacity:0;animation:fadeup 1s cubic-bezier(.16,.84,.24,1) forwards;animation-delay:var(--d,.5s)}
+@keyframes fadeup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.band .photo{animation:unveil 1.6s cubic-bezier(.7,0,.2,1) .25s both}
+@keyframes unveil{from{clip-path:inset(100% 0 0 0);transform:scale(1.14)}to{clip-path:inset(0 0 0 0);transform:scale(1)}}
+.rv{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,.84,.24,1) var(--d,0s),transform 1s cubic-bezier(.16,.84,.24,1) var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.clip{clip-path:inset(0 0 100% 0);transform:scale(1.1);transition:clip-path 1.5s cubic-bezier(.7,0,.2,1),transform 1.8s cubic-bezier(.16,.84,.24,1)}
+.clip.in{clip-path:inset(0 0 0 0);transform:scale(1)}
+.track::before{transform:scaleX(0);transform-origin:0 50%;transition:transform 1.8s cubic-bezier(.65,0,.2,1) .2s}
+.track.in::before{transform:scaleX(1)}
+.wk .dot{transition:transform .5s cubic-bezier(.16,.84,.24,1),background .3s,color .3s,border-color .3s}
+.wk:hover .dot{transform:scale(1.12)}
+.btn{transition:transform .35s cubic-bezier(.16,.84,.24,1),background .3s,color .3s}
+.btn:hover{transform:translateY(-2px)}
+.select .big{display:inline-block}
+@media (prefers-reduced-motion:reduce){.w>span,.hf{transform:none!important;opacity:1!important}.rv,.clip{opacity:1;transform:none;clip-path:none}.track::before{transform:none}#prog{display:none}}
 footer{border-top:1px solid var(--line);padding:40px 0 56px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -250,6 +273,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
     </div>
   </div>
 </nav>
+<div id="prog" aria-hidden="true"></div>
 <main id="app" tabindex="-1"></main>
 <footer>
   <div class="wrap">
@@ -346,8 +370,8 @@ function faculty(h='Who trains you', intro='Every applicant also gets two privat
   </div></section>`;
 }
 function selectivity(){
-  return `<div class="wrap"><div class="select">
-    <div class="big">30<small>seats in Cohort 1</small></div>
+  return `<div class="wrap"><div class="select" data-noreveal>
+    <div class="big"><span data-count="30">30</span><small>seats in Cohort 1</small></div>
     <div class="big gold">1%<small>of applicants accepted</small></div>
     <div><p style="font-size:20px;color:var(--ink);max-width:460px">Cohort 1 is capped at 30 seats, and we accept only the top 1% of applicants. Every injector in the room has earned their place.</p>
       <div class="actions"><a class="btn" href="#/checkout/tuition">Apply for one of 30 seats</a></div></div>
@@ -361,7 +385,7 @@ function home(){
   + cohortBar() + selectivity() + `
   <section style="padding-top:64px"><div class="wrap">
     <div class="facts">
-      <div><b>98%</b><span class="muted">Target hire rate</span></div>
+      <div><b><span data-count="98">98</span>%</b><span class="muted">Target hire rate</span></div>
       <div><b>$70–100k</b><span class="muted">Typical first-year salary</span></div>
       <div><b>30</b><span class="muted">Interviews in one day</span></div>
     </div>
@@ -661,6 +685,7 @@ function render(){
   window.scrollTo(0,0);
   app.focus({preventScroll:true});
   wire(top, parts);
+  setupMotion();
 }
 function wire(top, parts){
   app.querySelectorAll('[data-wk]').forEach(b=>b.addEventListener('click',()=>{
@@ -733,6 +758,69 @@ function wire(top, parts){
   const r=document.getElementById('resetDemo');
   if(r) r.addEventListener('click',()=>{ S={}; save(); go('#/'); });
 }
+
+/* ---------- motion + scroll inversion ---------- */
+const DARK={paper:[20,17,15],'paper-2':[31,26,22],ink:[252,248,242],text:[226,216,200],muted:[176,160,139],line:[60,51,43],'gold-deep':[217,188,134]};
+const LIGHT={paper:[252,248,242],'paper-2':[247,240,229],ink:[20,17,15],text:[34,26,20],muted:[108,92,75],line:[228,216,196],'gold-deep':[122,94,40]};
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lastT=-1;
+function setTheme(t){
+  if(Math.abs(t-lastT)<0.002) return; lastT=t;
+  const st=document.documentElement.style;
+  for(const k in LIGHT){ const c=LIGHT[k].map((v,i)=>Math.round(DARK[k][i]+(v-DARK[k][i])*t)); st.setProperty('--'+k,`rgb(${c.join(',')})`); }
+  document.documentElement.style.colorScheme = t<0.5?'dark':'light';
+  const m=document.querySelector('meta[name=theme-color]'); if(m) m.content=`rgb(${(t<0.5?DARK:LIGHT).paper.join(',')})`;
+}
+function themeProgress(){
+  const band=app.querySelector('.band'); if(!band) return 1;
+  const b=band.getBoundingClientRect().bottom, vh=innerHeight;
+  let t=(vh*0.6-b)/(vh*0.45); t=Math.min(1,Math.max(0,t));
+  return t*t*(3-2*t);
+}
+let ticking=false;
+function onScroll(){
+  if(ticking) return; ticking=true;
+  requestAnimationFrame(()=>{
+    ticking=false;
+    setTheme(themeProgress());
+    const max=document.documentElement.scrollHeight-innerHeight;
+    document.getElementById('prog').style.transform=`scaleX(${max>0?scrollY/max:0})`;
+  });
+}
+addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll);
+function countUp(el){
+  const end=+el.dataset.count; if(RM){el.textContent=end;return;}
+  const t0=performance.now(), dur=1600;
+  const step=now=>{ const p=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-p,4); el.textContent=Math.round(end*e); if(p<1) requestAnimationFrame(step); };
+  el.textContent='0'; requestAnimationFrame(step);
+}
+let io;
+function setupMotion(){
+  lastT=-1; onScroll();
+  // hero headline word split
+  app.querySelectorAll('.band h1').forEach(h=>{
+    const words=h.textContent.trim().split(/\s+/);
+    h.setAttribute('aria-label',h.textContent.trim());
+    h.innerHTML=words.map((w,i)=>`<span class="w" aria-hidden="true"><span style="--i:${i}">${w}</span></span>`).join(' ');
+  });
+  app.querySelectorAll('.band .eyebrow,.band .tagline,.band .lede,.band .actions').forEach((el,i)=>{ el.classList.add('hf'); el.style.setProperty('--d',(0.35+i*0.12)+'s'); });
+  if(io) io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    e.target.querySelectorAll?.('[data-count]').forEach(countUp);
+  }),{threshold:0.18, rootMargin:'0px 0px -6% 0px'});
+  const groups=['section h2','.cohortbar>*','.select>*','.facts>div','.aud>a','.list li','.steps>div','.oneone','.lead>div','.creds li','.compare>div','.tiers tr','.panel','.wkdetail','.done>*','.co>div>*:not(form)','.summary'];
+  groups.forEach(sel=>{
+    let i=0; app.querySelectorAll(sel).forEach(el=>{
+      if(el.closest('.band')) return;
+      el.classList.add('rv'); el.style.setProperty('--d',(Math.min(i++,8)*0.08)+'s'); io.observe(el);
+    });
+  });
+  app.querySelectorAll('.portrait').forEach(el=>{ el.classList.add('clip'); io.observe(el); });
+  app.querySelectorAll('.track').forEach(el=>io.observe(el));
+}
+
 document.getElementById('menuBtn').addEventListener('click',e=>{
   const l=document.getElementById('links'); const o=l.classList.toggle('open'); e.currentTarget.setAttribute('aria-expanded',o);
 });
